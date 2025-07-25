@@ -14,18 +14,18 @@ const mapStateToProps = (state) => {
   return {
     searchField: state.searchRobots.searchField,
     robots: state.requestRobots.robots,
-    isPending: state.requestRobots.isPending
-  }
-}
+    isPending: state.requestRobots.isPending,
+  };
+};
 
 // dispatch the DOM changes to call an action. note mapStateToProps returns object, mapDispatchToProps returns function
 // the function returns an object then uses connect to change the data from redecers.
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-    onRequestRobots: () => dispatch(requestRobots())
-  }
-}
+    onRequestRobots: () => dispatch(requestRobots()),
+  };
+};
 
 class App extends Component {
   componentDidMount() {
@@ -34,19 +34,21 @@ class App extends Component {
 
   render() {
     const { robots, searchField, onSearchChange, isPending } = this.props;
-    const filteredRobots = robots.filter(robot => {
+    const filteredRobots = robots.filter((robot) => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
-    })
+    });
     return (
-      <div className='tc'>
-        <h1 className='f1'>RoboFriends</h1>
-        <SearchBox searchChange={onSearchChange}/>
+      <div className="tc">
+        <h1 className="f1">RoboFriends</h1>
+        <SearchBox searchChange={onSearchChange} />
         <Scroll>
-          { isPending ? <h1>Loading</h1> :
+          {isPending ? (
+            <h1>Loading</h1>
+          ) : (
             <ErrorBoundry>
               <CardList robots={filteredRobots} />
             </ErrorBoundry>
-          }
+          )}
         </Scroll>
       </div>
     );
@@ -54,4 +56,4 @@ class App extends Component {
 }
 
 // action done from mapDispatchToProps will channge state from mapStateToProps
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);
