@@ -1,0 +1,15 @@
+@use 'abstracts';
+@use 'base';
+@use 'layout';
+@use 'pages';
+@use 'components';
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+}
+
+[data-theme='dark'] {
+  --bg-color: #111111;
+  --text-color: #ffffff;
+}

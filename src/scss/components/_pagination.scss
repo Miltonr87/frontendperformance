@@ -1,0 +1,15 @@
+@use '../abstracts/' as a;
+@use 'sass:color';
+
+.pagination {
+  @include a.flex-container($align: center, $gap: a.rem(12));
+
+  &__page-number.button {
+    border-color: a.$color-black;
+
+    &:hover {
+      background-color: color.scale(a.$color-black, $lightness: 80%);
+      border-color: a.$color-black;
+    }
+  }
+}

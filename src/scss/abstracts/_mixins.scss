@@ -1,0 +1,36 @@
+@use 'functions' as f;
+@use 'sass:map';
+
+$breakpoints: (
+  'xsmall': f.rem(380),
+  'small': f.rem(420),
+  'medium': f.rem(720),
+  'large': f.rem(1200),
+);
+
+@mixin breakpoint($size) {
+  @media (width > map.get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (width <= map.get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin flex-container(
+  $direction: row,
+  $justify: flex-start,
+  $align: stretch,
+  $wrap: nowrap,
+  $gap: 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  gap: $gap;
+}

@@ -1,0 +1,99 @@
+@use '../abstracts/' as a;
+
+.artwork {
+  @include a.flex-container($direction: column, $align: center);
+  width: a.rem(387);
+
+  @include a.breakpoint-down('small') {
+    width: a.rem(300);
+  }
+
+  &:hover {
+    transform: scale(103%);
+  }
+
+  &__image-container {
+    max-width: a.rem(387);
+    height: a.rem(444);
+
+    @include a.breakpoint-down('small') {
+      max-width: a.rem(300);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__description {
+    position: relative;
+    @include a.flex-container($justify: space-between, $align: center);
+
+    margin: 0 auto;
+    width: a.rem(350);
+    height: a.rem(132);
+    padding: a.rem(16);
+    border: a.rem(1) solid a.$color-card-border;
+
+    bottom: 40px;
+
+    background-color: a.$color-page-background;
+
+    @include a.breakpoint-down('small') {
+      width: a.rem(310);
+      padding: a.rem(8);
+    }
+  }
+
+  &__heading {
+    @include a.flex-container($direction: column, $gap: a.rem(8));
+    max-width: a.rem(224);
+  }
+
+  &__title {
+    font-size: var(--base-font-size);
+    font-weight: 500;
+    letter-spacing: -0.5px;
+  }
+
+  &__artist {
+    font-size: calc(var(--base-font-size) - 2px);
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: a.$color-light-yellow;
+  }
+
+  &__is-public {
+    font-size: calc(var(--base-font-size) - 2px);
+    font-weight: 700;
+  }
+}
+
+.artwork.small {
+  @include a.flex-container($align: center, $gap: a.rem(16));
+  padding: a.rem(13) a.rem(16);
+  width: a.rem(416);
+  height: a.rem(130);
+
+  border: a.rem(1) solid a.$color-card-border;
+  background-color: a.$color-white;
+
+  .artwork__image-container {
+    width: a.rem(80);
+    height: a.rem(80);
+  }
+
+  .artwork__heading {
+    max-width: a.rem(219);
+  }
+
+  .artwork__description {
+    gap: a.rem(16);
+    bottom: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+  }
+}

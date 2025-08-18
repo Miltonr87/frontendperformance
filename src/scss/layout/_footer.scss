@@ -1,0 +1,27 @@
+@use '../abstracts/' as a;
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: a.rem(128);
+  background: #f07800;
+
+  box-shadow:
+    0 0 15px rgba(255, 87, 34, 0.7),
+    0 0 30px rgba(255, 87, 34, 0.5);
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 a.rem(10);
+  }
+
+  &__link {
+    @include a.flex-container($align: center, $gap: a.rem(4));
+    color: #fff;
+  }
+}
